@@ -3,8 +3,15 @@
  puts "What is your DOB?"
  dob = gets.chomp
 
-open('directory.txt', 'w') do |f|
-
-  f.write "name: " + name + " DOB: " + dob
-
+if File.exist?('directory.txt')
+  File.open('directory.txt', 'a') do |f|
+  f << "name: " + name + " dob: " + dob + "\n"
+  f.close
+  end
+else
+  File.open('directory.txt', 'w') do |f|
+  f << "name: " + name + " dob: " + dob + "\n"
+  f.close
+  end
 end
+
